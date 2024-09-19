@@ -10,6 +10,7 @@ jobs:
       - name: Checkout sources
         run: |
           git clone https://github.com/google/angle .
+          git checkout chromium/5243
       - name: Fetch depot_tools
         run: |
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
