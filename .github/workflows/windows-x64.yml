@@ -9,11 +9,10 @@ jobs:
     steps:
       - name: Checkout sources
         run: |
-          git clone https://github.com/google/angle .
-          git checkout chromium/5243
+          git clone -b chromium/6727 https://github.com/google/angle .
       - name: Fetch depot_tools
         run: |
-          git clone -b chromium/5243 https://chromium.googlesource.com/chromium/tools/depot_tools.git
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
       - name: Build
         shell: cmd
         run: |
