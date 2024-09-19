@@ -13,7 +13,7 @@ jobs:
           git checkout chromium/5243
       - name: Fetch depot_tools
         run: |
-          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+          git clone -b chromium/5243 https://chromium.googlesource.com/chromium/tools/depot_tools.git
       - name: Build
         shell: cmd
         run: |
