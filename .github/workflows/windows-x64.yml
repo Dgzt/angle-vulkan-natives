@@ -23,7 +23,7 @@ jobs:
           cmd /c gclient
           cmd /c python scripts/bootstrap.py
           cmd /c gclient sync
-          cmd /c gn gen out/Release --args="is_debug=false target_cpu=\"x64\" angle_build_all=false is_component_build = false angle_enable_d3d9 = false angle_enable_d3d11 = false angle_enable_gl = false angle_enable_null = false angle_enable_metal = false angle_enable_vulkan = true angle_enable_essl = false angle_enable_glsl = true angle_shared_libvulkan = false"
+          cmd /c gn gen out/Release --args="is_debug=false target_cpu=\"x64\" angle_build_all=false is_component_build = false angle_enable_d3d9 = false angle_enable_d3d11 = false angle_enable_gl = false angle_enable_null = false angle_enable_metal = false angle_enable_vulkan = true angle_enable_essl = false angle_enable_glsl = true"
           cmd /c autoninja -C out/Release
       - name: Pack
         shell: bash
