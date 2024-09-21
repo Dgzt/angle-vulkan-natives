@@ -7,6 +7,9 @@ jobs:
   build-linux-x64:
     runs-on: ubuntu-latest
     steps:
+      - name: Delete huge unnecessary tools folder
+        run: |
+          rm -rf /opt/hostedtoolcache
       - name: Checkout sources
         run: |
           git clone -b chromium/6727 https://github.com/google/angle .
