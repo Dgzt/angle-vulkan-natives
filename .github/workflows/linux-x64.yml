@@ -1,7 +1,11 @@
 name: linux-x64
 
-on: 
-  workflow_dispatch
+on:
+  workflow_call:
+    inputs:
+      angleVersion:
+        required: true
+        type: string
 
 jobs:
   build-linux-x64:
@@ -12,7 +16,7 @@ jobs:
           rm -rf /opt/hostedtoolcache
       - name: Checkout sources
         run: |
-          git clone -b chromium/7871 https://github.com/google/angle .
+          git clone -b chromium/${{ inputs.angleVersion }} https://github.com/google/angle .
       - name: Fetch depot_tools
         run: |
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
