@@ -12,10 +12,30 @@ jobs:
     uses: ./.github/workflows/linux-x64.yml
     with:
       angleVersion: ${{ inputs.angleVersion }}
+      artifactName: angle-linux-x64
+      disableSwapchainMaintenance1: false
+    secrets: inherit
+
+  build-linux-x64-disableSwapchainMaintenance1:
+    uses: ./.github/workflows/linux-x64.yml
+    with:
+      angleVersion: ${{ inputs.angleVersion }}
+      artifactName: angle-linux-x64-disableSwapchainMaintenance1
+      disableSwapchainMaintenance1: true
     secrets: inherit
 
   build-windows-x64:
     uses: ./.github/workflows/windows-x64.yml
     with:
       angleVersion: ${{ inputs.angleVersion }}
+      artifactName: angle-windows-x64
+      disableSwapchainMaintenance1: false
+    secrets: inherit
+
+  build-windows-x64-disableSwapchainMaintenance1:
+    uses: ./.github/workflows/windows-x64.yml
+    with:
+      angleVersion: ${{ inputs.angleVersion }}
+      artifactName: angle-windows-x64-disableSwapchainMaintenance1
+      disableSwapchainMaintenance1: true
     secrets: inherit

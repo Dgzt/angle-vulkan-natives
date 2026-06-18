@@ -6,6 +6,12 @@ on:
       angleVersion:
         required: true
         type: string
+      artifactName:
+        required: true
+        type: string
+      disableSwapchainMaintenance1:
+        required: true
+        type: boolean
 
 jobs:
   build-windows-x64:
@@ -14,6 +20,10 @@ jobs:
       - name: Checkout sources
         run: |
           git clone -b chromium/${{ inputs.angleVersion }} https://github.com/google/angle .
+      - name: Force to disable supportsSwapchainMaintenance1 extension
+        if: ${{ inputs.disableSwapchainMaintenance1 }}
+        run: |
+          sed -i '/ANGLE_FEATURE_CONDITION(&mFeatures, supportsSwapchainMaintenance1,/,/useVulkanSwapchain == UseVulkanSwapchain::Yes);/c    ANGLE_FEATURE_CONDITION(&mFeatures, supportsSwapchainMaintenance1, false);'     src/libANGLE/renderer/vulkan/vk_renderer.cpp
       - name: Fetch depot_tools
         run: |
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
@@ -51,5 +61,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
-          name: angle-windows-x64
+          name: ${{ inputs.artifactName }}
           path: angle-windows-x64
